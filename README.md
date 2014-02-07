@@ -1,10 +1,8 @@
-castfm
-======
+# castfm
 
 Douban FM Chrome Cast extension
 
-How to install and start
-==========================
+# How to install
 
 * Install Node.js
 ```
@@ -24,5 +22,12 @@ sudo npm install -g grunt-cli
 cd to the root folder of this project, then run:
 
 ```
+npm install
 grunt
+```
+
+# How to start and test
+
+```
+grunt serve
 ```
