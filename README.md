@@ -23,6 +23,7 @@ cd to the root folder of this project, then run:
 
 ```
 npm install
+bower install
 grunt build
 ```
 
