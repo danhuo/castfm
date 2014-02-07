@@ -352,6 +352,7 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-npm-install');
 
   grunt.registerTask('serve', function (target) {
     if (target === 'dist') {
@@ -360,6 +361,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'grunt-npm-install',
       'bower-install',
       'concurrent:server',
       'autoprefixer',
@@ -383,6 +385,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'grunt-npm-install',
     'bower-install',
     'useminPrepare',
     'concurrent:dist',
