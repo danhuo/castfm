@@ -23,7 +23,7 @@ cd to the root folder of this project, then run:
 
 ```
 npm install
-grunt
+grunt build
 ```
 
 # How to start and test
@@ -31,3 +31,7 @@ grunt
 ```
 grunt serve
 ```
+
+# Optional
+
+Install the [generator-angular-fullstack](https://github.com/DaftMonk/generator-angular-fullstack) scaffolding to fasten the developement.
