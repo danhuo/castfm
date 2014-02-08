@@ -12,18 +12,7 @@
           <span class="glyphicon glyphicon-music"></span>
         </p>
         <p>
-          <span class="label label-info">华语MHz</span>
-          <span class="label label-info">欧美MHz</span>
-          <span class="label label-info">八零MHz</span>
-          <span class="label label-info">工作学习MHz</span>
-          <span class="label label-info">粤语MHz</span>
-          <span class="label label-info">轻音乐MHz</span>
-          <span class="label label-info">咖啡MHz</span>
-          <span class="label label-info">八零MHz</span>
-          <span class="label label-info">民谣MHz</span>
-          <span class="label label-info">电影原声MHz</span>
-          <span class="label label-info">小清新MHz</span>
-          <span class="label label-info">9零MHz</span>
+          <span ng-repeat="ch in channels"><span class="label label-info">{{ ch.name }}</span></span>
         </p>
       </div>
     </div>
