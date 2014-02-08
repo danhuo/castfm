@@ -1,21 +1,31 @@
-<div ng-include="'partials/navbar'"></div>
-
-<div class="jumbotron">
-  <h1>'Allo, 'Allo <span ng-show="currentUser">{{ currentUser.name }}</span>!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!</a></p>
-</div>
-
-<div class="row marketing">
-  <div ng-repeat="thing in awesomeThings">
-      <h4>{{thing.name}}</h4>
-      <p>{{thing.info}}</p>
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="http://img3.douban.com/lpic/s4119451.jpg" alt="...">
+      <div class="caption">
+        <h3>Song Title</h3>
+        <p>singer</p>
+        <p>
+          <audio controls="controls" autoplay="autoplay">
+          <source src="http://mr3.douban.com/201402081357/970fb79215a6dc190d0569f3e963d470/view/song/small/p723616.mp3" type="audio/mpeg" />
+          </audio>
+          <span class="glyphicon glyphicon-music"></span>
+        </p>
+        <p>
+          <span class="label label-info">华语MHz</span>
+          <span class="label label-info">欧美MHz</span>
+          <span class="label label-info">八零MHz</span>
+          <span class="label label-info">工作学习MHz</span>
+          <span class="label label-info">粤语MHz</span>
+          <span class="label label-info">轻音乐MHz</span>
+          <span class="label label-info">咖啡MHz</span>
+          <span class="label label-info">八零MHz</span>
+          <span class="label label-info">民谣MHz</span>
+          <span class="label label-info">电影原声MHz</span>
+          <span class="label label-info">小清新MHz</span>
+          <span class="label label-info">9零MHz</span>
+        </p>
+      </div>
+    </div>
   </div>
-</div>
-
-<div class="footer">
-  <p>♥ from the Yeoman team</p>
 </div>
