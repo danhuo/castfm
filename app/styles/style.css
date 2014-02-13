@@ -1,0 +1,134 @@
+.caption {
+  margin: 0px 0px 0px 5px;
+}
+  
+#player {
+  display:block;
+  position: relative;
+  width:360px;
+  height:60px;
+  z-index:1000;
+  margin:1px 0px 0px 5px;
+  padding:0px;
+  opacity:0.7;
+  background-color:#000;
+  font-family: 'Roboto', "Open Sans", "Verdana", Georgia, Serif;
+  transition:opacity 1s;
+  -webkit-transition:opacity 1s; /* Safari */
+}
+
+#player:hover {
+  opacity: 1.0;
+}
+
+#play {
+  margin: 10px 20px 10px 10px;
+  float:left;
+  width: 65px;
+  height: 40px;
+  background-image:url('http://allcast.in/imagefiles/play.png');
+}
+
+#play:hover {
+  background-image:url('http://allcast.in/imagefiles/play-hover.png');
+}
+
+#play:press {
+  background-image:url('http://allcast.in/imagefiles/play-press.png');
+}
+
+#pause {
+  display:none;
+  margin: 10px 20px 10px 10px;
+  float:left;
+  width: 65px;
+  height: 40px;
+  background-image:url('http://allcast.in/imagefiles/pause.png');
+}
+
+#pause:hover {
+  background-image:url('../imagefiles/pause-hover.png');
+}
+
+#progress {
+  position: absolute;
+  left: 78px;
+  top: 23px;
+  width: 1px;
+  height: 36px;
+  z-index: 10;
+  background-image:url('http://allcast.in/imagefiles/timeline_bg_progress.png');
+  background-repeat:repeat-x;
+}
+
+#progress_indicator {
+  position: absolute;
+  left: 78px;
+  top: 23px;
+  draggable: true;
+  width: 6px;
+  height: 36px;
+  z-index: 1000;
+  background-image:url('http://allcast.in/imagefiles/timeline_indicator.png');
+  background-repeat:repeat-x;
+}
+
+#progress_bg {
+  position: absolute;
+  left: 78px;
+  top: 23px;
+  width: 160px;
+  height: 36px;
+  background-image:url('http://allcast.in/imagefiles/timeline_bg_track.png');
+  background-repeat:repeat-x;
+}
+
+#casticonactive {
+  position: absolute;
+  left: 320px;
+  top: 14px;
+  width: 32px;
+  height: 32px;
+  display:none; 
+  background-image:url('http://allcast.in/imagefiles/ic_media_route_on_custom.png');
+}
+
+#casticonidle {
+  position: absolute;
+  left: 320px;
+  top: 14px;
+  width: 32px;
+  height: 32px;
+  display:block; 
+  background-image:url('http://allcast.in/imagefiles/ic_media_route_off_custom.png');
+}
+
+#audio_off {
+  position: absolute;
+  left: 290px;
+  top: 14px;
+  width: 32px;
+  height: 32px;
+  display:none; 
+  background-image:url('http://allcast.in/imagefiles/audio_off.png');
+}
+
+#audio_on {
+  position: absolute;
+  left: 290px;
+  top: 14px;
+  width: 32px;
+  height: 32px;
+  display:block; 
+  background-image:url('http://allcast.in/imagefiles/audio_on.png');
+}
+
+#duration {
+  position: absolute;
+  left: 240px;
+  top: 21px;
+  color: #fff;
+  width: 60px;
+  height: 32px;
+  display:block; 
+}
