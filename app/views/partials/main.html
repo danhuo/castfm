@@ -6,13 +6,13 @@
         <p>singer</p>
       </div>
       <div id="player">
-        <div id="play" style="display: block;"></div>
-        <div id="pause" style="display: none;"></div>
+        <div id="play" style="display: block" onclick="play()"></div>
+        <div id="pause" style="display: none" onclick="pause()"></div>
         <div id="progress_bg"></div>
         <div id="progress"></div>
         <div id="progress_indicator" draggable="true"></div>
-        <div id="casticonactive" style="display: none;"></div>
-        <div id="casticonidle" style="display: block;"></div>
+        <div id="casticonactive" style="display: block"></div>
+        <div id="casticonidle" style="display: none"></div>
         <div id="audio_on"></div>
         <div id="audio_off"></div>
         <div id="duration">00:00:00</div>
@@ -20,7 +20,5 @@
   </div>
 </div>
 <div style="display:none">
-  <audio controls id="#html5audio">
-    <source src="horse.mp3" type="audio/mpeg">
-  </audio>
+  <audio id="#html5audio"/>
 </div>
