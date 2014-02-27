@@ -3,13 +3,14 @@ var currentVolume = 0.5;
 var progressFlag = 1;
 var mediaCurrentTime = 0;
 var session = null;
+var contentType = "audio/mpeg";
 
 if(!chrome.cast || !chrome.cast.isAvailable) {
   setTimeout(initializeCastApi, 1000);
 }
 
 function initializeCastApi() {
-  var applicationID = chrome.cast.media.;
+  var applicationID = "35614B38";
   var sessionRequest = new.chrome.cast.SessionRequest(applicationID);
   var apiConfig = new.chrome.cast.ApiConfig(sessionRequest, sessionListener, receiverListener);
 
@@ -74,11 +75,12 @@ function receiverListener(e) {
   }
 };
 
-function launchApp(mediaURL, currentTime, contentType, title, thumb) {
+function launchApp(title, thumb) {
   console.log('launching app...');
   appendMessage('launching app...');
   chrome.cast.requestSession(onRequestSessionSuccess, onLaunchError);
-  loadMedia(mediaURL, currentTime, contentType, title, thumb);
+  currentTitle = title;
+  currentThumb = thumb;
 };
 
 function onRequestSessionSuccess(e) {
@@ -88,6 +90,11 @@ function onRequestSessionSuccess(e) {
   document.getElementById("casticonactive").style.display = 'none;';
   document.getElementById("casticonidle").style.display = 'block;';
   session.addUpdateListener(sessionUpdateListener.bind(this));
+  var mediaURL = $("#html5audio").src;
+  var currentTime = $("#html5audio").currentTime;
+  var title = $("#title").text;
+  var thumb = $("#thumb").src;
+  loadMedia(mediaURL, currentTime, contentType, title, thumb);
 };
 
 function onLaunchError() {
