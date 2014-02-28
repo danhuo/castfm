@@ -33,17 +33,17 @@ function onSuccess(message) {
 function onStopAppSuccess() {
   console.log('Session stopped');
   appendMessage('Session stopped');
-  document.getElementById("casticonactive").style.display = 'block;';
-  document.getElementById("casticonidle").style.display = 'none;';
+  $("#casticonactive").show();
+  $("#casticonidle").hide();
 };
 
-function sessionListener(e, mediaURL) {
+function sessionListener(e) {
   console.log('New session ID: ' + e.sessionId);
   appendMessage('New session ID: ' + e.sessionId);
   session = e;
   if (session.media.length != 0 ) {
     appendMessage('Found ' + session.media.length + ' existing media sessions.');
-    onMediaDiscovered('onRequestSessionSuccess_', mediaURL);
+    onMediaDiscovered('onRequestSessionSuccess_', session.media[0]);
   }
   session.addMediaListener(onMediaDiscovered.bind(this, 'addMediaListener'));
   session.addUpdateListener(sessionUpdateListener.bind(this));
@@ -55,12 +55,10 @@ function sessionUpdateListener(isAlive) {
   appendMessage(message);
   if(!isAlive) {
     session = null;
-    document.getElementById("casticonactive").style.display = 'block;';
-    document.getElementById("casticonidle").style.display = 'none;';
-    var play = document.getElementById("play");
-    var pause = document.getElementById("pause");
-    play.style.display = 'block;';
-    pause.style.display = 'none;';
+    $("#casticonactive").show();
+    $("#casticonidle").hide();
+    $("#pause").hide();
+    $("#play").show();
   }
 };
 
@@ -87,8 +85,8 @@ function onRequestSessionSuccess(e) {
   console.log('session success: ' + e.sessionId);
   appendMessage('session success: ' + e.sessionId);
   session = e;
-  document.getElementById("casticonactive").style.display = 'none;';
-  document.getElementById("casticonidle").style.display = 'block;';
+  $("#casticonactive").hide();
+  $("#casticonidle").show();
   session.addUpdateListener(sessionUpdateListener.bind(this));
   var mediaURL = $("#html5audio").src;
   var currentTime = $("#html5audio").currentTime;
@@ -140,10 +138,10 @@ function onMediaDiscovered(how, mediaSession) {
   currentMediaSession = mediaSession;
   mediaSession.addUpdateListener(onMediaStatusUpdate);
   mediaCurrentTime = currentMediaSession.currentTime;
-  play.style.display = 'none;';
-  pause.style.display = 'block;';
-  document.getElementById("casticonactive").style.display = 'none;';
-  document.getElementById("casticonidle").style.display = 'block;';
+  $("#play").hide();
+  $("#pause").show();
+  $("#casticonactive").hide();
+  $("#casticonidle").show();
 };
 
 function onMediaError() {
@@ -153,6 +151,7 @@ function onMediaError() {
 
 function onMediaStatusUpdate(isAlive) {
   if(progressFlag) {
+    $("#progress").
     document.getElementById("progress").value = parseInt(100 * currentMediaSession.currentTime / currentMediaSession.media.duration);
   }
 };
@@ -161,25 +160,10 @@ function playMedia() {
   if(!currentMediaSession)
     return;
 
-  var play = document.getElementById("play");
-  var pause = document.getElementById("pause");
-  if((play.style.display == 'block;') && (pause.style.display == 'none;') {
-    currentMediaSession.play(null, mediaCommandSuccessCallback.bind(this, "playing started for " + currentMediaSession.sessionId), onError);
-    play.style.display == 'none;';
-    pause.style.display == 'block;';
-    appendMessage('play started');
-  }
-  else if ((play.style.display == 'none;') && (pause.style.display == 'block;') {
-    currentMediaSession.pause(null, mediaCommandSuccessCallback.bind(this, "paused " + currentMediaSession.sessionId), onError);
-    play.style.display == 'block;';
-    pause.style.display == 'none;';
-    appendMessage('paused');
-  }
-  else {
-    console.log('wrong playpause status');
-    appendMessage('wrong playpause status');
-    return;
-  }
+  currentMediaSession.play(null, mediaCommandSuccessCallback.bind(this, "playing started for " + currentMediaSession.sessionId), onError);
+  $("#play").hide();
+  $("#pause").show();
+  appendMessage('play started');
 };
 
 function stopMedia() {
@@ -187,10 +171,8 @@ function stopMedia() {
     return;
 
   currentMediaSession.stop(null, mediaCommandSuccessCallback.bind(this, "stopped " + currentMediaSession.sessionId), onError);
-  var play = document.getElementById("play");
-  var pause = document.getElementById("pause");
-  play.style.display == 'block;';
-  pause.style.display == 'none;';
+  $("#pause").hide();
+  $("#play").show();
   appendMessage('media stopped');
 };
 
@@ -208,6 +190,6 @@ function mediaCommandSuccessCallback(info) {
 };
 
 function appendMessage(message) {
-  var dw = document.getElementById("debugmessage");
-  dw.innerHTML += '\n' + JSON.stringify(message);
+  var debug_msg = $("#debugmessage").html();
+  $("#debugmessage").html(debug_msg + '\n' + JSON.stringify(message));
 };
